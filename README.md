@@ -43,13 +43,13 @@ By clicking on the links, you will be redirected to the respective Azure Boards 
    - Add, edit, and delete users
    - Assign roles and permissions
 2. **Company Management:**
-   - Add, edit, and delete users
-   - Assign roles and permission
+   - Add, edit, and delete companies
+   - Assign roles and permissions
 3. **Reporting:**
    - Generate reports on applications, users, and system activity
 4. **Dashboard:**
    - Overview of system metrics and key performance indicators (KPIs)
-   - Total Users success rate, etc
+   - Total Users, success rate, etc.
 
 ### **2. External User and Company App**
 
@@ -74,9 +74,9 @@ By clicking on the links, you will be redirected to the respective Azure Boards 
    - Companies can review applications submitted by users
    - Users can apply for jobs listed by companies
 
-## 4. Use Case Scenarios
+## **Use Case Scenarios**
 
-### 4.1 JobSeeker
+### **Job Seeker**
 
 1. Register and log in.
 2. Search for jobs using keywords and filters.
@@ -84,7 +84,7 @@ By clicking on the links, you will be redirected to the respective Azure Boards 
 4. Apply for jobs and track application status.
 5. Update profile information.
 
-### 4.2 Employer
+### **Employer**
 
 1. Register and log in.
 2. Register a company.
@@ -92,7 +92,7 @@ By clicking on the links, you will be redirected to the respective Azure Boards 
 4. View and manage applications for job listings.
 5. Update company profile.
 
-### 4.3 Admin
+### **Admin**
 
 1. Log in.
 2. Manage users (view, update, delete).
@@ -100,9 +100,9 @@ By clicking on the links, you will be redirected to the respective Azure Boards 
 4. Manage companies (view, update, delete).
 5. Manage company applications.
 
-## 5. Basic API Endpoints
+## **Basic API Endpoints**
 
-### 5.1 User Routes
+### **User Routes**
 
 - GET /api/users
 - GET /api/users/{id}
@@ -111,7 +111,7 @@ By clicking on the links, you will be redirected to the respective Azure Boards 
 - PUT /api/users/{id}
 - DELETE /api/users/{id}
 
-### 5.2 Job Routes
+### **Job Routes**
 
 - GET /api/jobs
 - GET /api/jobs/{id}
@@ -119,7 +119,7 @@ By clicking on the links, you will be redirected to the respective Azure Boards 
 - PUT /api/jobs/{id}
 - DELETE /api/jobs/{id}
 
-### 5.3 Application Routes
+### **Application Routes**
 
 - GET /api/applications
 - GET /api/applications/{id}
@@ -127,7 +127,7 @@ By clicking on the links, you will be redirected to the respective Azure Boards 
 - PUT /api/applications/{id}
 - DELETE /api/applications/{id}
 
-### 5.4 Company Routes
+### **Company Routes**
 
 - GET /api/companies
 - GET /api/companies/{id}
@@ -135,7 +135,7 @@ By clicking on the links, you will be redirected to the respective Azure Boards 
 - PUT /api/companies/{id}
 - DELETE /api/companies/{id}
 
-### 5.5 Admin Routes
+### **Admin Routes**
 
 - GET /api/admin/users
 - GET /api/admin/jobs
@@ -143,11 +143,14 @@ By clicking on the links, you will be redirected to the respective Azure Boards 
 - GET /api/admin/applications
 - POST /api/admin/roles
 
-## 6. Database Design
+## **General Designs**
 
 ![Base Class Diagram](./Assets/base_class_diagram.png)
 
 _Figure: Base Class Diagram illustrating the database design._
+
+![Base Cloud Diagram](./Assets/base_cloud_architecture.png)
+_Figure: Base Cloud Architecture Diagram illustrating the database design._
 
 ## **Development and Deployment**
 
@@ -169,18 +172,24 @@ _Figure: Base Class Diagram illustrating the database design._
    - Use Azure App Services or similar platforms for deployment.
    - Set up CI/CD pipelines for automated build and deployment processes.
 
+## **Authentication and Authorization**
+
+1. **Auth0 Integration:**
+   - Use Auth0 for authentication and authorization.
+   - Add `Auth0UserId` field in the User class for integration.
+
 ## **Monitoring and Logging**
 
 1. **Logging:**
 
-   - Use Application Insights or similar tools for application logging and monitoring. (WatchDog)
+   - Use Application Insights or similar tools for application logging and monitoring.
 
 2. **Tracking Progress:**
 
-   - Use Azure Boards for tracking tasks, managing sprints, and reviewing progress. (Azure Boards)
+   - Use Azure Boards for tracking tasks, managing sprints, and reviewing progress.
 
 3. **Documentation:**
-   - Maintain detailed documentation using Confluence (Swagger)
+   - Maintain detailed documentation using Confluence and Swagger.
 
 ## **Summary**
 
