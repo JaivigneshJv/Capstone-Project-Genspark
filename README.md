@@ -100,57 +100,15 @@ By clicking on the links, you will be redirected to the respective Azure Boards 
 4. Manage companies (view, update, delete).
 5. Manage company applications.
 
-## **Basic API Endpoints**
-
-### **User Routes**
-
-- GET /api/users
-- GET /api/users/{id}
-- POST /api/users/register
-- POST /api/users/login
-- PUT /api/users/{id}
-- DELETE /api/users/{id}
-
-### **Job Routes**
-
-- GET /api/jobs
-- GET /api/jobs/{id}
-- POST /api/jobs
-- PUT /api/jobs/{id}
-- DELETE /api/jobs/{id}
-
-### **Application Routes**
-
-- GET /api/applications
-- GET /api/applications/{id}
-- POST /api/applications
-- PUT /api/applications/{id}
-- DELETE /api/applications/{id}
-
-### **Company Routes**
-
-- GET /api/companies
-- GET /api/companies/{id}
-- POST /api/companies
-- PUT /api/companies/{id}
-- DELETE /api/companies/{id}
-
-### **Admin Routes**
-
-- GET /api/admin/users
-- GET /api/admin/jobs
-- GET /api/admin/companies
-- GET /api/admin/applications
-- POST /api/admin/roles
-
 ## **General Designs**
 
 ![Base Class Diagram](./Assets/base_class_diagram.png)
 
 _Figure: Base Class Diagram illustrating the database design._
 
-![Base Cloud Diagram](./Assets/base_cloud_architecture.png)
-_Figure: Base Cloud Architecture Diagram illustrating the database design._
+![](./Assets/flow_diagram.png)
+
+_Figure: Base Flow Architecture Diagram illustrating the database design._
 
 ## **Development and Deployment**
 
@@ -172,12 +130,6 @@ _Figure: Base Cloud Architecture Diagram illustrating the database design._
    - Use Azure App Services or similar platforms for deployment.
    - Set up CI/CD pipelines for automated build and deployment processes.
 
-## **Authentication and Authorization**
-
-1. **Auth0 Integration:**
-   - Use Auth0 for authentication and authorization.
-   - Add `Auth0UserId` field in the User class for integration.
-
 ## **Monitoring and Logging**
 
 1. **Logging:**
@@ -190,6 +142,52 @@ _Figure: Base Cloud Architecture Diagram illustrating the database design._
 
 3. **Documentation:**
    - Maintain detailed documentation using Confluence and Swagger.
+
+### Flow Diagram Description:
+
+![Base Cloud Diagram](./Assets/base_cloud_architecture.png)
+
+1. **Azure DevOps (CI/CD Pipeline)**:
+
+   - Build and Push Docker images for Admin API Backend and User API Backend to Azure Container Registry (ACR).
+   - Deploy Docker images to Azure Web Apps (Admin API Backend and User API Backend).
+
+2. **Azure Container Registry (ACR)**:
+
+   - Stores Docker images for Admin API Backend and User API Backend.
+
+3. **Azure Web App (Admin API Backend)**:
+
+   - Handles requests from Admin Frontend and interacts with Azure SQL Database and Azure Key Vault.
+
+4. **Azure Web App (User API Backend)**:
+
+   - Handles requests from User Frontend and interacts with Azure SQL Database and Azure Key Vault.
+
+5. **Azure Web App (Admin Frontend)**:
+
+   - Interface for admin functionalities such as user management, job listings management, company management, and application reviews.
+
+6. **Azure Web App (User Frontend)**:
+
+   - Interface for users to search and apply for jobs, manage profiles, and receive notifications.
+
+7. **Azure SQL Database**:
+
+   - Stores data related to users, jobs, companies, applications, and other entities.
+
+8. **Azure Key Vault**:
+   - Stores secrets, keys, and configurations securely.
+
+### Flow:
+
+1. **CI/CD Pipeline**:
+
+   - Build -> Push to ACR -> Deploy to Web Apps.
+
+2. **Web Apps**:
+   - Admin Frontend -> Admin API Backend -> SQL Database / Key Vault.
+   - User Frontend -> User API Backend -> SQL Database / Key Vault.
 
 ## **Summary**
 
